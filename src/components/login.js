@@ -78,7 +78,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-const BASE_URL = "http://10.81.78.12:8000";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
   const [username, setUsername] = useState("");

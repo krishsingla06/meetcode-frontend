@@ -95,10 +95,17 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
+    console.log("Sign-up form submitted");
+    console.log("Username:", username);
+    console.log("Password:", password);
+
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
+
+    console.log("Base URL:", BASE_URL);
+    console.log("API Endpoint:", `${BASE_URL}/signup`);
 
     const response = await fetch(`${BASE_URL}/signup`, {
       method: "POST",
@@ -107,6 +114,9 @@ const SignUp = () => {
       },
       body: JSON.stringify({ username, password }),
     });
+
+    console.log(response);
+    console.log("Response status:", response.status);
 
     if (response.status === 200) {
       navigate("/login");
