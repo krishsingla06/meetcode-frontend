@@ -37,18 +37,6 @@ sayHi();`);
   }, []);
 
   const renderSidebarContent = () => {
-    // if (activePanel === "chat") {
-    //   return (
-    //     <div className="chat-box">
-    //       <h3>Team Chat</h3>
-    //       <div className="chat-messages">
-    //         <p> Hello chat !! </p>
-    //         <p> Here, You can talk.</p>
-    //       </div>
-    //       <input type="text" placeholder="Type a message..." />
-    //     </div>
-    //   );
-    // }
 
     if (activePanel === "chat") {
       return (
@@ -91,7 +79,6 @@ sayHi();`);
   return (
     <div className="workspace-container">
       <div className="workspace-main">
-        {/* Vertical Toolbar */}
         <div className="vertical-toolbar">
           <button title="Files" onClick={() => setActivePanel("files")}>
             🗂
@@ -101,15 +88,12 @@ sayHi();`);
           </button>
         </div>
 
-        {/* Sidebar */}
         <div className="file-sidebar" style={{ width: ` ${sidebarWidth}px` }}>
           {renderSidebarContent()}
         </div>
 
-        {/* Resizer */}
         <div className="resizer" onMouseDown={handleMouseDown} />
 
-        {/* Code Editor */}
         <div className="code-editor">
           <Editor
             language="javascript"
@@ -129,41 +113,5 @@ sayHi();`);
   );
 };
 
-//   return (
-//     <div className="workspace-container">
-//       <div className="workspace-main">
-//         {/* Vertical Toolbar */}
-//         <div className="vertical-toolbar">
-//           <button title="Files" onClick={() => setActivePanel("files")}>🗂</button>
-//           <button title="Chat" onClick={() => setActivePanel("chat")}>💬</button>
-//         </div>
-
-//         {/* Sidebar */}
-//         <div className="file-sidebar" style={{ width: ${sidebarWidth}px }}>
-//           {renderSidebarContent()}
-//         </div>
-
-//         {/* Resizer */}
-//         <div className="resizer" onMouseDown={handleMouseDown} />
-
-//         {/* Code Editor */}
-//         <div className="code-editor">
-//           <Editor
-//             language="javascript"
-//             value={code}
-//             onChange={(value) => setCode(value || "")}
-//             theme="vs-dark"
-//             options={{
-//               fontSize: 16,
-//               minimap: { enabled: false },
-//               fontFamily: "Courier New, monospace",
-//               automaticLayout: true,
-//             }}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Workspace;

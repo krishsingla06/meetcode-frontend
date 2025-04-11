@@ -1,0 +1,220 @@
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import "./login.css";
+// // import dotenv from "dotenv";
+// // dotenv.config();
+// //const BASE_URL = process.env.REACT_APP_API_URL;
+
+// const Login = () => {
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+
+//     const response = await fetch("http://10.81.78.12:8000/login", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ username, password }),
+//     });
+
+//     if (response.status === 200) {
+//       const data = await response.json();
+//       localStorage.setItem("authToken", data.token);
+//       localStorage.setItem("username", data.username);
+//       localStorage.setItem("role", "student");
+//       navigate("/");
+//     } else {
+//       alert("Login failed");
+//     }
+//   };
+
+//   return (
+//     <div className="login-page">
+//       {/* Left Side: Form */}
+//       <form className="login-left" onSubmit={handleLogin}>
+//         <h1>Welcome Back!</h1>
+//         <input
+//           type="text"
+//           className="login-input"
+//           placeholder="Username"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           className="login-input"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <button className="login-btn" type="submit">
+//           LOGIN
+//         </button>
+//         <p className="signup-text">
+//           New here?
+//           <span className="signup-link" onClick={() => navigate("/signup")}>
+//             Sign Up
+//           </span>
+//         </p>
+//       </form>
+
+//       {/* Right Side: Illustration */}
+//       <div className="login-right">
+//         <p className="logo">MeetCode</p>
+//         <img src="/dev-illustration.png" alt="Developer Illustration" />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import "./signup.css";
+// const BASE_URL = process.env.REACT_APP_API_URL; // Ensure this is set in your .env file
+
+// const SignUp = () => {
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [confirmPassword, setConfirmPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleSignUp = async (e) => {
+//     e.preventDefault();
+//     console.log("Sign-up form submitted");
+
+//     if (password !== confirmPassword) {
+//       alert("Passwords do not match");
+//       return;
+//     }
+
+//     const response = await fetch(`${BASE_URL}/signup`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ username, password }),
+//     });
+
+//     console.log(response);
+
+//     if (response.status === 200) {
+//       navigate("/login");
+//     } else {
+//       alert("Sign-up failed");
+//     }
+//   };
+
+//   return (
+//     <div className="signup-container">
+//       <h2>Sign Up</h2>
+//       <form className="signup-form" onSubmit={handleSignUp}>
+//         <div className="input-group">
+//           <label>Username: </label>
+//           <input
+//             type="text"
+//             value={username}
+//             onChange={(e) => setUsername(e.target.value)}
+//             required
+//           />
+//         </div>
+//         <div className="input-group">
+//           <label>Password: </label>
+//           <input
+//             type="password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//             required
+//           />
+//         </div>
+//         <div className="input-group">
+//           <label>Confirm Password: </label>
+//           <input
+//             type="password"
+//             value={confirmPassword}
+//             onChange={(e) => setConfirmPassword(e.target.value)}
+//             required
+//           />
+//         </div>
+//         <div className="button-container">
+//           <button className="signup-button" type="submit">
+//             Sign Up
+//           </button>
+//           <button className="login-button" onClick={() => navigate("/login")}>
+//             Back to Login
+//           </button>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default SignUp;
+
+//   return (
+//     <div className="workspace-container">
+//       <div className="workspace-main">
+//         {/* Vertical Toolbar */}
+//         <div className="vertical-toolbar">
+//           <button title="Files" onClick={() => setActivePanel("files")}>🗂</button>
+//           <button title="Chat" onClick={() => setActivePanel("chat")}>💬</button>
+//         </div>
+
+//         {/* Sidebar */}
+//         <div className="file-sidebar" style={{ width: ${sidebarWidth}px }}>
+//           {renderSidebarContent()}
+//         </div>
+
+//         {/* Resizer */}
+//         <div className="resizer" onMouseDown={handleMouseDown} />
+
+//         {/* Code Editor */}
+//         <div className="code-editor">
+//           <Editor
+//             language="javascript"
+//             value={code}
+//             onChange={(value) => setCode(value || "")}
+//             theme="vs-dark"
+//             options={{
+//               fontSize: 16,
+//               minimap: { enabled: false },
+//               fontFamily: "Courier New, monospace",
+//               automaticLayout: true,
+//             }}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// if (activePanel === "chat") {
+//   return (
+//     <div className="chat-box">
+//       <h3>Team Chat</h3>
+//       <div className="chat-messages">
+//         <p> Hello chat !! </p>
+//         <p> Here, You can talk.</p>
+//       </div>
+//       <input type="text" placeholder="Type a message..." />
+//     </div>
+//   );
+// }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

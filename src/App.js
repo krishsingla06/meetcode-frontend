@@ -16,23 +16,21 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setAuthToken(localStorage.getItem("authToken")); // Get token from localStorage
+    setAuthToken(localStorage.getItem("authToken"));
     if (!authToken) {
-      // If no token found, allow navigation to login or signup
       if (
         window.location.pathname !== "/login" &&
         window.location.pathname !== "/signup"
       ) {
-        navigate("/login"); // Redirect to login page if no token and not visiting login/signup
+        navigate("/login");
       }
     } else {
-      // If token found, allow navigation to all pages
       setNamee(localStorage.getItem("username"));
       if (
         window.location.pathname === "/login" ||
         window.location.pathname === "/signup"
       ) {
-        navigate("/"); // Redirect to home page if token is found and visiting login/signup
+        navigate("/");
       }
     }
   }, [authToken, navigate]);
@@ -51,14 +49,14 @@ function App() {
       <div
         className="container-fluid"
         style={{
-          width: "100vw", // Full width
-          height: "100vh", // Full height
-          marginTop: "20px", // Add margin from the top
+          width: "100vw",
+          height: "100vh",
+          marginTop: "20px",
           display: "flex",
-          flexDirection: "column", // Ensure content fills the vertical space
-          backgroundRepeat: "no-repeat", // Prevent tiling
-          backgroundPosition: "center", // Center the image
-          backgroundSize: "cover", // Ensure the whole image is visible
+          flexDirection: "column",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
           position: "relative",
         }}
       >

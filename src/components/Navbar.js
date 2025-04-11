@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Navbar.css"; // Assuming you have a CSS file for styling
+import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
